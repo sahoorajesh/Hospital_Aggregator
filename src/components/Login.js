@@ -87,7 +87,7 @@ const Login = () => {
                                 
                                 <br />
                                 
-                                <h4 className="ma0 grow ">Forgot Password? <a className="dim link" href="#0">Click Here</a></h4>
+                                <h4 className="ma0 grow ">Forgot Password? <Link className="dim link" to={"/forgotpassword"}>Click Here</Link></h4>
                                 
                                 <Row>
                                     <Link to={"/userregister"}>

@@ -4,7 +4,8 @@ import Userregister from "./components/Userregister";
 import Hospitalregister from "./components/Hospitalregister";
 import {BrowserRouter, Switch,Route} from "react-router-dom";
 import Home from "./components/Home";
-
+import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
 import Loginhospital from "./components/Loginhospital";
 
 class App extends Component{
@@ -22,7 +23,8 @@ class App extends Component{
                 <Route path= "/hospitallogin" component ={Loginhospital}/>
                 <Route path="/hospitalregister" component ={Hospitalregister}/>
                 <Route path="/userregister" component = {Userregister}/>
-                
+                <Route path="/forgotpassword" component = {ForgotPassword}/>
+                <Route path = "/resetpassword" component = {ResetPassword}/>
             </Switch>
        
         </div>
