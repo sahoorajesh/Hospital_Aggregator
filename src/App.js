@@ -12,7 +12,7 @@ class App extends Component{
   render(){
     return (
     <BrowserRouter>
-      <div className="tc bg-black-10">
+      <div className="tc bg-black-10 body">
         
         
         <div>

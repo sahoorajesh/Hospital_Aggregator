@@ -10,6 +10,9 @@
     color: #e9ecef;
    
 }
+.width {
+    width: 200%;
+}
 .bd-callout-info {
     border-left-color: #5bc0de;
     top: 40%;
@@ -47,7 +50,7 @@
 .close2{
     float:right;
     display:block;
-    margin-left:-50px;
+    /* margin-left:-50px; */
     clear:inherit;
     
 
@@ -66,10 +69,7 @@
 #btn2{
     border-radius: 50px;
 }
-.rf{
-    position: relative;
-    bottom: -40px;
-}
+
 
 .icon{
     float:left;
@@ -98,11 +98,7 @@ th{
     background: linear-gradient(to left, #813AFE 0%,#9c27b0 44%,#813AFE 100%);
 
 }
-/* .thmain{
-    text-align: right;
 
-
-} */
 .kj4{
     
     text-align:center;
