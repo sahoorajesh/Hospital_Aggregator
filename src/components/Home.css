@@ -161,8 +161,8 @@ th{
 .btn-outline-primary:hover {
     color: white;
     
-    border-color: #0d6efd;
-    background: linear-gradient(to left, #813AFE 0%,#9c27b0 44%,#813AFE 100%);
+    border-color: #43cef8;
+    background: #0096FF;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .btn {
