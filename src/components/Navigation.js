@@ -23,7 +23,7 @@ const Navigation = (props) =>{
 				  </li>
 
 				  <li className= "pa3 grow">
-				  	<Link className="link white" to={"/login"}>Sign as user</Link>
+				  	<Link className="link white" to={"/login"}>Sign in as user</Link>
 				  </li>
 
 				  <li className="ml-auto pa3 grow">
