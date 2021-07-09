@@ -7,7 +7,7 @@ const Search = () => {
             <form>
                 
                 <input className="black pa2 mv2" type="text" placeholder="Search.." name="search"/>
-                <button className="black pa2 ma2" type="submit"><i class="fa fa-search "></i></button>
+                <button className="black pa2 ma2" type="submit"><i className="fa fa-search "></i></button>
             </form>
         </div>
     );

@@ -1,123 +1,134 @@
 import React from 'react';
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import loginIcon from '../images/user.svg'
-import uiImg from '../images/login.svg';
-import IconButton from "@material-ui/core/IconButton";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
 import Navigation from "./Navigation";
 import {Link } from "react-router-dom";
 import './Login.css';
+import { Component } from 'react';
+import axios from "axios";
 
 
-const Login = () => {
-    const [values, setValues] = React.useState(
-        {
-            email: "",
-            password: "",            
-            showPassword: false,
-        }
-    );
+class Login extends Component {
+    constructor(props){
+        super(props);
 
-    const handleClickShowPassword = () => {
-        setValues(
-            { 
-                ...values, showPassword: !values.showPassword 
-            }
-        );
-      };
-      
-    const handleMouseDownPassword = (event) => {
+        this.state = {
+            username: "",
+            password: ""
+        };
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleFormSubmit = event => {
         event.preventDefault();
-    };
+    
+        const endpoint = "http://localhost:8010/api/auth/signin";
+    
+        const username = this.state.username;
+        const password = this.state.password;
+        
+        const user_object = {
+          username: username,
+          password: password
+        };
+    
+        axios.post(endpoint, user_object).then(res => {
+            localStorage.setItem("authorization", res.data.token);
+            
+            return this.handleDashboard();
+               
+        }).catch(() => {
+            alert("Invalid Credentials")
+        });
+        
+      };
+    
+    handleDashboard() {
+        axios.get("http://localhost:8010/api/test/hospital").then(res => {
+            if (res.data === "Hospital Content") {
+                this.props.history.push("/");
+            } else {
+                alert("Authentication failure");
+            }
+        });
+    }
+    
 
-    const handlePasswordChange = (prop) => (event) => {
-        setValues(
+    handleChange (event) {
+        this.setState(
             {
-             ...values, [prop]: event.target.value 
+            [event.target.name] 
+                : event.target.value 
             }
         );
     };
 
-    return (
-        
-        <div>
-            <Navigation Tabchange="Hospital Register" url="/hospitalregister"/>
-            <Container className="mt-5">
-                <Row>
-                    
-                    <div className="w-50 bg-white-70 center br4">
-                        <h1> Sign in as user</h1> 
-                        <Col lg={4} md={6} sm={12} className="mt-5 p-3">
-                            <img className="icon-img mt1" src={loginIcon} alt="icon"/>
-                            <Form>
-                                <Input
-                                    placeholder ="Email"
-                                    className ="ph3 br4 pv3"
-                                    type= {"email"}
-                                   
-                                    onChange={handlePasswordChange("email")}
-                                    value={values.email}
-                                  
-                                />
-                                <br />
-                             
-                                <Input
-                                    placeholder ="Password"
-                                    className ="ph3 br4 pv3"
-                                    type={values.showPassword ? "text" : "password"}
-                                    onChange={handlePasswordChange("password")}
-                                    value={values.password}
-                                   
-                                />
-                                <br />
-                                
-                                <strong>
-                                    View Password
-                                </strong>
-                                <IconButton
-                                    className="grow"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword} 
-                                >
+    render() {
+        return(
+            <div>
+                <Navigation Tabchange="Hospital Register" url="/hospitalregister"/>
+                <Container className="mt-5">
+                    <Row>
+                        
+                        <div className="w-50 bg-white-70 center br4">
+                            <h1> Sign in as user</h1> 
+                            <Col lg={4} md={6} sm={12} className="mt-5 p-3">
+                                <img className="icon-img mt1" src={loginIcon} alt="icon"/>
+                                <Form >
+                                    <Input
+                                        placeholder ="Username"
+                                        className ="ph3 br4 pv3"
+                                        type= {"text"}
+                                        name="username"
+                                        value={this.state.username}
+                                        onChange = {this.handleChange}
+                           
                                     
-                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                </IconButton>
+                                    />
+                                    <br />
                                 
-                                <br />
+                                    <Input
+                                        placeholder ="Password"
+                                        className ="ph3 br4 pv3"
+                                        type={"password"}
+                                        name="password"
+                                        value={this.state.password}
+                                        onChange = {this.handleChange}
+                                  
+                                    
+                                    />
+                                    <br />
+                                    
+                                   
+                              
+                                    <h4 className="mt3 grow ">Forgot Password? <Link className="dim link" to={"/forgotpassword"}>Click Here</Link></h4>
+                                    <h4 className="mt3 grow ">Wanna Join us? <Link className="dim link" to={"/userregister"}>Sign up</Link></h4>
+                                    
                                 
-                                <h4 className="ma0 grow ">Forgot Password? <Link className="dim link" to={"/forgotpassword"}>Click Here</Link></h4>
-                                
-                                <Row>
-                                    <Link to={"/userregister"}>
-                                        <Button 
-                                            variant="pa2 mv3 mr4 br-pill w-30 b" 
-                                            className ="backy f5 grow"
-                                            type="submit"
-                                        >Sign up</Button>
-                                    </Link>
                                     
                                     <Button 
-                                        variant=" grow pa2 mv3 br-pill w-30  b" 
+                                        variant="pa2 mv3 br-pill w-30 b" 
+                                        className ="backy f5 grow"
                                         type="submit"
-                                        className ="bg-white black-90 f5"
-                                    >Sign in</Button> 
-                                </Row>
+                                        onClick = {this.handleFormSubmit}
+                                    >Sign in</Button>
+                                
                               
-                            </Form>
-                        </Col>
-                    </div>
-                    <Col lg={8} md={6} sm={12}>
-                        <img className="w-100" src={uiImg} alt=""/>
-                    </Col>
-                </Row>
-            </Container>
-            
-        </div>
+                                
+                            
+                                </Form>
+                            </Col>
+                        </div>
+                        
+                    </Row>
+                </Container>
+                
+            </div>
 
-
-    );
-};
+        );
+    }
+}
 
 export default Login;
