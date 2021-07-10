@@ -15,7 +15,7 @@ class Hospitalregister extends Component {
 			hospname : "",
 			hospspec : "",
 			district : "",
-			hospstate : "",
+			hospAddress : "",
 			ownership:"",
 			year : "",
 			email : "",
@@ -35,26 +35,18 @@ class Hospitalregister extends Component {
         event.preventDefault();
     
         const endpoint = "http://localhost:8010/api/auth/signup";
-    
-		const hospname = this.state.hospname;
-		const hospspec = this.state.hospspec;
-		const district = this.state.district;
-		const hospstate = this.state.hospstate;
-		const ownership = this.state.ownership;
-		const year = this.state.year;
-		const email = this.state.email;
-		const website = this.state.website;
-		const mobile = this.state.mobile;
-		const aboutus = this.state.aboutus;
-        const username = this.state.username;
-        const password = this.state.password;
-        const roles = this.state.roles;
+		
+		const { hospname, hospspec, district,
+				hospAddress, ownership, year,
+				email, website, mobile,
+				aboutus, username, password, roles} = this.state;
+
 
         const hospital_user = {
 			hospname: hospname,
 			hospspec: hospspec,
 			district: district,
-			hospstate: hospstate,
+			hospAddress: hospAddress,
 			ownership: ownership,
 			year: year,
 			email: email,
@@ -70,7 +62,7 @@ class Hospitalregister extends Component {
 			hospname : "",
 			hospspec : "",
 			district : "",
-			hospstate : "",
+			hospAddress : "",
 			ownership:"",
 			year : "",
 			email : "",
@@ -108,7 +100,7 @@ class Hospitalregister extends Component {
 	render() {
 		return(
 			<div>
-				<Navigation Tabchange="Sign in as User" url="/login"/>
+				<Navigation Tabchange="Sign in" url="/login"/>
 				<Container className="mt-5 body-info">
 					<Row>
 					<br/>
@@ -123,65 +115,65 @@ class Hospitalregister extends Component {
 
 									
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="name">Hospital-Name:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="hospname" value={this.state.hospname} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy f4">Hospital-Name:</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="hospname" value={this.state.hospname} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="speciality">Hospital-Speciality:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="hospspec"  value={this.state.hospspec} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy f4">Hospital-Speciality:</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="hospspec"  value={this.state.hospspec} onChange={this.handleChange} required/>
 										</div>
 										
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="district">District:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="district"  value={this.state.district} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy f4">District:</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="district"  value={this.state.district} onChange={this.handleChange} required/>
 										</div>
 										
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="state">State:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="hospstate"  value={this.state.hospstate} onChange={this.handleChange} required="true" />
+											<label className="db fw6 lh-copy f4">Address:</label>
+											<textarea className="pa2 input-reset ba bg-transparent w-75" rows = "5" cols = "60" name = "hospAddress" value={this.state.hospAddress} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="owner">Ownership</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="ownership" placeholder="Public/Private"  value={this.state.ownership} onChange={this.handleChange} required="true" />
+											<label className="db fw6 lh-copy f4">Ownership</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="ownership" placeholder="Public/Private"  value={this.state.ownership} onChange={this.handleChange} required />
 											
 										</div>
 										
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="year">Year of Starting:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="year"  value={this.state.year} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy f4">Year of Starting:</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="year"  value={this.state.year} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="email-address">Email-id:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="email" name="email"  id="email-address"  value={this.state.email} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy f4">Email-id:</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="email" name="email"  id="email-address"  value={this.state.email} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="website">Website(if any):</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="url" name="website"  value={this.state.website} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy f4">Website(if any):</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="url" name="website"  value={this.state.website} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="contact">Contact-details:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="tel" pattern="[0-9]{4}[0-9]{2}[0-9]{4}" name="mobile" placeholder="XXXX-XX-XXXX"  value={this.state.mobile} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy f4">Contact-details:</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="tel" pattern="[0-9]{4}[0-9]{2}[0-9]{4}" name="mobile" placeholder="XXXX-XX-XXXX"  value={this.state.mobile} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="state">About hospital in short:</label>
-											<textarea className="pa2 input-reset ba bg-transparent w-75" rows = "5" cols = "60" name = "aboutus" value={this.state.aboutus} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy f4">About hospital in short:</label>
+											<textarea className="pa2 input-reset ba bg-transparent w-75" rows = "5" cols = "60" name = "aboutus" value={this.state.aboutus} onChange={this.handleChange} required/>
 										</div>
 										
 										
 										<div className="mt3">
-											<label className="db fw6 lh-copy f4" for="username">Username:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="username" id="username" value={this.state.username} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy f4">Username:</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="username" id="username" value={this.state.username} onChange={this.handleChange} required/>
 										</div>
 										
 										<div className="mv3">
-											<label className="db fw6 lh-copy lh-copy f4" for="password">Password</label>
-											<input className="b pa2 input-reset ba bg-transparent w-75" type="password" name="password"  id="password"  value={this.state.password} onChange={this.handleChange} required="true"/>
+											<label className="db fw6 lh-copy lh-copy f4">Password</label>
+											<input className="b pa2 input-reset ba bg-transparent w-75" type="password" name="password"  id="password"  value={this.state.password} onChange={this.handleChange} required/>
 										</div>
 										
 										

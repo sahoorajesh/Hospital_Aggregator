@@ -41,7 +41,7 @@ const ResetPassword = () => {
         
         
         <div className="body">
-            <Navigation Tabchange="Hospital Register" url="/hospitalregister"/>
+            <Navigation Tabchange="Hospital Register" url="/hospitalregister" Tabchange1="Sign in" url1="/login"/>
             <Container>
                 <Row>
                     

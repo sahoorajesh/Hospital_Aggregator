@@ -68,12 +68,12 @@ class Login extends Component {
     render() {
         return(
             <div>
-                <Navigation Tabchange="Hospital Register" url="/hospitalregister"/>
+                <Navigation Tabchange="Hospital Register" url="/hospitalregister" />
                 <Container className="mt-5">
                     <Row>
                         
                         <div className="w-50 bg-white-70 center br4">
-                            <h1> Sign in as user</h1> 
+                            <h1> Sign in</h1> 
                             <Col lg={4} md={6} sm={12} className="mt-5 p-3">
                                 <img className="icon-img mt1" src={loginIcon} alt="icon"/>
                                 <Form >

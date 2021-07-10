@@ -5,7 +5,7 @@ import "./Userregister.css"
 function Userregister() {
     return (
         <div className="body-info">
-        	<Navigation Tabchange="Hospital Register" url="/hospitalregister"/>
+        	<Navigation Tabchange="Hospital Register" url="/hospitalregister" Tabchange1="Sign in" url1="/login"/>
             <div className="signup-form black">
                 <form> 
                 <h2>Sign Up</h2>

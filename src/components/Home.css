@@ -95,7 +95,7 @@ th{
     margin: 20px 20px;
     background: #813AFE; /* Old browsers */
     
-    background: linear-gradient(to left, #813AFE 0%,#9c27b0 44%,#813AFE 100%);
+    /* background: linear-gradient(to left, #813AFE 0%,#9c27b0 44%,#813AFE 100%); */
 
 }
 

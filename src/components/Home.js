@@ -7,7 +7,7 @@ import Navigation from "./Navigation";
 const Home = () => {
     return (
         <div className="yu8 bg-white-30">
-            <Navigation Tabchange="Hospital Register" url="/hospitalregister" />
+            <Navigation Tabchange="Hospital Register" url="/hospitalregister" Tabchange1="Sign in" url1="/login"/>
             <Search />
 
 
