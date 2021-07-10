@@ -16,7 +16,7 @@ const Home = () => {
                     <thead className=" bg ">
                         <tr >
                             
-                            <th scope="col"><big> HOSPITAL Details</big>
+                            <th scope="col"><big> HOSPITAL DETAILS</big>
                             </th>
                             <th scope="col"  ><big className="thmain">SPECIALITY</big></th>
                             <th scope="col" colSpan="2" className="tc "><big>ACTION</big></th>
@@ -24,7 +24,7 @@ const Home = () => {
                     </thead>
                     <tbody >
                         {/* Ist entry in the table */}
-                        <tr className="m3  drk outline " id="rd">
+                        <tr className="m3 shadow shadow-hover drk " id="rd">
                             
 
                             <td className="rf"><big><img className="icon" src="https://image.flaticon.com/icons/png/512/33/33777.png" alt="hosp" width="100px" />XYZ Hospital <br/>
@@ -49,7 +49,7 @@ const Home = () => {
                         </tr>
                         
 
-                        <tr className="thead-dark  drk ">
+                        <tr className="thead-dark shadow shadow-hover   drk ">
 
                             <td className="rf"><big><img className="icon" src="https://image.flaticon.com/icons/png/512/33/33777.png" alt="hosp" width="100px" />XYZ Hospital <br/>
                             <strong className="f4">About Hospital: </strong>
@@ -73,7 +73,7 @@ const Home = () => {
                             </td>
                         </tr>
                         {/* 3rd entry */}
-                        <tr className="thead-dark outline drk ">
+                        <tr className="thead-dark shadow shadow-hover  drk ">
 
                             <td className="rf"><big><img className="icon" src="https://image.flaticon.com/icons/png/512/33/33777.png" alt="hosp" width="100px" />XYZ Hospital <br/>
                             <strong className="f4">About Hospital: </strong>
@@ -97,7 +97,7 @@ const Home = () => {
                             </td>
                         </tr>
                         {/* 4th */}
-                        <tr className="thead-dark  drk ">
+                        <tr className="thead-dark  shadow shadow-hover drk ">
 
                             <td className="rf"><big><img className="icon" src="https://image.flaticon.com/icons/png/512/33/33777.png" alt="hosp" width="100px" />XYZ Hospital<br/> 
                             <strong className="f4">About Hospital: </strong>
