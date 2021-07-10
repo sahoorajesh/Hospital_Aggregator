@@ -184,7 +184,7 @@ class Hospitalregister extends Component {
 									</div>
 									
 									<div className="lh-copy mt3">
-									<Link className="f4 grow link dim black db" to={"/hospitallogin"}>Sign in as Hospital</Link>
+									{/* <Link className="f4 grow link dim black db" to={"/login"}>Sign in as Hospital</Link> */}
 									<h4 className="ma0 grow ">Forgot Password? <Link className="dim link" to={"/forgotpassword"}>Click Here</Link></h4>
 									</div>
 								</form>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Component } from 'react';
 import "./Admin.css"
-
+import {Row} from "react-bootstrap";
 class admin extends Component {
     constructor(props) {
         super(props);
@@ -39,11 +39,12 @@ class admin extends Component {
                         Admin Page
                     </strong>
                 </h1>
+                <hr className="w-20 admin bg-black"/>
                 <br/>
                 <strong className="f2">
                     List of new Hospitals Registered 
                 </strong>
-               <hr className="bg-black"/>
+               <hr className=" bg-black"/>
                 <table className="tl">
                     
                     <tbody>
@@ -77,9 +78,12 @@ class admin extends Component {
                                                 </li>
                                             </ul>
                                             <hr className="bg-black"/>
-                </td>
-                                      
-                                        <button onClick={this.delete.bind(this, hospital.username)} class="btn btn-danger">Delete</button>
+                                        </td>
+                                        <div className="flex">
+                                            <button className="btn f4 b bg-dark-red white bn mr3 grow">Approve</button>
+                                            <button className="btn f4  grow " onClick={this.delete.bind(this, hospital.username)}>Reject</button>
+                                            
+                                        </div>
                                     </tr>
                                     
                             )
