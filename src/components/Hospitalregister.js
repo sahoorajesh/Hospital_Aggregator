@@ -24,7 +24,12 @@ class Hospitalregister extends Component {
 			aboutus : "",
             username : "",
             password : "",
-			roles : ["hospital"]
+			roles : ["hospital"],
+			showButton: true,
+			showDetails: false,
+			showapproveStatus: false,
+			showrejectStatus:false
+			
         };
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -39,7 +44,9 @@ class Hospitalregister extends Component {
 		const { hospname, hospspec, district,
 				hospAddress, ownership, year,
 				email, website, mobile,
-				aboutus, username, password, roles} = this.state;
+				aboutus, username, password, roles,
+				showButton,showDetails,
+				showapproveStatus,showrejectStatus} = this.state;
 
 
         const hospital_user = {
@@ -55,7 +62,12 @@ class Hospitalregister extends Component {
 			aboutus: aboutus,
 			username: username,
 			password: password,
-			roles: roles
+			roles: roles,
+			showButton:showButton,
+			showDetails:showDetails,
+			showapproveStatus:showapproveStatus,
+			showrejectStatus:showrejectStatus,
+			
         };
 
 		this.setState({
