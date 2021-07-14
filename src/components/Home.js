@@ -1,14 +1,44 @@
 import React from "react";
+
 import "./Home.css"
-import Search from "./Search";
+
 import Navigation from "./Navigation";
 
 
-const Home = () => {
+function Home(){
+    const[userData,setUserData]=React.useState([]);
+
+    const[name,setName]=React.useState('');
+    React.useEffect(()=>{
+        const data=[
+            {name:"Hos1",spec:"Cardio"},
+            {name:"Hos2",spec:"Skeletal"},
+            {name:"Hos3",spec:"Cardio"},
+            {name:"Hos4",spec:"Nervous"}
+        ];
+        setUserData(data);
+    },[])
+    const handleSearch = () => {
+        debugger
+        
+        const newData = userData.filter(x => x.name == (name =='' ? x.name : name));
+        setUserData(newData);
+
+    };
+    
     return (
         <div className="yu8 bg-white-30">
             <Navigation Tabchange="Hospital Register" url="/hospitalregister" Tabchange1="Sign in" url1="/login"/>
-            <Search />
+            <div> <form>
+                
+                <input className="black pa2 mv2" type="text" placeholder="Search.." name="search"
+                onChange={(e)=>setName(e.target.value)}/>
+
+                <button className="black pa2 ma2" 
+                onClick={()=> handleSearch()} ><i className="fa fa-search "></i></button>
+            </form></div>
+            {/* Search bar */}
+            
 
 
             <div className=" bd-callout bd-callout-info overflow-auto ">
@@ -22,18 +52,20 @@ const Home = () => {
                             <th scope="col" colSpan="2" className="tc "><big>ACTION</big></th>
                         </tr>
                     </thead>
-                    <tbody >
-                        {/* Ist entry in the table */}
-                        <tr className="m3 shadow shadow-hover drk " id="rd">
+                    <tbody id="h1" >
+                        {
+                            userData && userData.length >0 ?
+                            userData.map(item =>
+                                <tr className="m3 shadow shadow-hover drk " id="rd">
                             
 
-                            <td className="rf"><big><img className="icon" src="https://image.flaticon.com/icons/png/512/33/33777.png" alt="hosp" width="100px" />XYZ Hospital <br/>
+                            <td className="rf"><big><img className="icon" src="https://image.flaticon.com/icons/png/512/33/33777.png" alt="hosp" width="100px" />{item.name}<br/>
                             
                              <strong className="f4">About Hospital: </strong>
                                 Ut nulla et amet sint tempor eiusmod labore consectetur qui ullamco Lorem fugiat mollit.                         
                         
                             </big></td>
-                            <td className="kj4"><big>__Speciality</big></td>
+                            <td className="kj4"><big>{item.spec}</big></td>
                             <td>
                                 <button
                                     className="close2 btn btn-outline-primary mr-2" id="btn1">
@@ -48,78 +80,20 @@ const Home = () => {
                             </td>
                         </tr>
                         
-
-                        <tr className="thead-dark shadow shadow-hover   drk ">
-
-                            <td className="rf"><big><img className="icon" src="https://image.flaticon.com/icons/png/512/33/33777.png" alt="hosp" width="100px" />XYZ Hospital <br/>
-                            <strong className="f4">About Hospital: </strong>
-                                Ut nulla et amet sint tempor eiusmod labore consectetur qui ullamco Lorem fugiat mollit.                         
-                            </big></td>
-                            <td className="kj4"><big>__Speciality</big></td>
-                            <td>
-                                <button
-                                    className="close2 btn btn-outline-primary mr-2"
-                                    id="btn1"
-
-                                >
-                                    <b>SEND ENQUIRY</b>
-                                </button></td>
-                            <td>
-                                <button className="btn btn-outline-primary mr-2" id="btn1">
-                                    <b>MORE</b>
-                                </button>
+                                )
+                                : 'No data'
+                        }
 
 
-                            </td>
-                        </tr>
-                        {/* 3rd entry */}
-                        <tr className="thead-dark shadow shadow-hover  drk ">
 
-                            <td className="rf"><big><img className="icon" src="https://image.flaticon.com/icons/png/512/33/33777.png" alt="hosp" width="100px" />XYZ Hospital <br/>
-                            <strong className="f4">About Hospital: </strong>
-                                Ut nulla et amet sint tempor eiusmod labore consectetur qui ullamco Lorem fugiat mollit.                         
+
                         
-                            </big></td>
-                            <td className="kj4"><big>__Speciality</big></td>
-                            <td>
-                                <button
-                                    className="close2 btn btn-outline-primary mr-2" id="btn1"
-
-                                >
-                                    <b>SEND ENQUIRY</b>
-                                </button></td>
-                            <td>
-                                <button className="btn btn-outline-primary mr-2" id="btn1">
-                                    <b>MORE</b>
-                                </button>
-
-
-                            </td>
-                        </tr>
-                        {/* 4th */}
-                        <tr className="thead-dark  shadow shadow-hover drk ">
-
-                            <td className="rf"><big><img className="icon" src="https://image.flaticon.com/icons/png/512/33/33777.png" alt="hosp" width="100px" />XYZ Hospital<br/> 
-                            <strong className="f4">About Hospital: </strong>
-                                Ut nulla et amet sint tempor eiusmod labore consectetur qui ullamco Lorem fugiat mollit.                         
                         
-                            </big></td>
-                            <td className="kj4"><big>__Speciality</big></td>
-                            <td className="tl">
-                                <button
-                                    className="close2 btn btn-outline-primary mr-2" id="btn1"
 
-                                >
-                                    <b>SEND ENQUIRY </b>
-                                </button></td>
-                            <td>
-                                <button className="btn btn-outline-primary mr-2" id="btn1" >
-                                    <b>MORE</b>
-                                </button>
-
-
-                            </td>
-                        </tr>
+                       
+                        
+                        
+                        
 
 
                     </tbody>
