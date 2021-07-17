@@ -6,6 +6,7 @@ import {BrowserRouter, Switch,Route} from "react-router-dom";
 import Home from "./components/Home";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
+import Loginhospital from "./components/Loginhospital";
 import Enquiry from "./components/Enquiry";
 import Admin from "./components/Admin"
 
@@ -18,7 +19,7 @@ class App extends Component{
             <Switch>
                 <Route exact path="/" component = {Home}/>
                 <Route path = "/login" component = {Login}/>
-                {/* <Route path= "/hospitallogin" component ={Loginhospital}/> */}
+                <Route path= "/hospitallogin" component ={Loginhospital}/>
                 <Route path="/hospitalregister" component ={Hospitalregister}/>
                 <Route path="/userregister" component = {Userregister}/>
                 <Route path="/forgotpassword" component = {ForgotPassword}/>

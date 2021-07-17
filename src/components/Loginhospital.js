@@ -1,123 +1,120 @@
-// import React from 'react';
-// import {Button, Col, Container, Form, Row} from "react-bootstrap";
-// import loginIcon from '../images/user.svg'
-// import uiImg from '../images/login.svg';
-// import IconButton from "@material-ui/core/IconButton";
-// import Visibility from "@material-ui/icons/Visibility";
-// import VisibilityOff from "@material-ui/icons/VisibilityOff";
-// import Input from "@material-ui/core/Input";
-// import Navigation from "./Navigation";
-// import {Link } from "react-router-dom";
-// import './Login.css';
+import React from 'react';
+import {Button, Col, Container, Form, Row} from "react-bootstrap";
+import loginIcon from '../images/user.svg'
+import Input from "@material-ui/core/Input";
+import Navigation from "./Navigation";
+import {Link } from "react-router-dom";
+import './Login.css';
+import { Component } from 'react';
+import axios from "axios";
 
 
-// const Login = () => {
-//     const [values, setValues] = React.useState(
-//         {
-//             email: "",
-//             password: "",            
-//             showPassword: false,
-//         }
-//     );
+class Loginhospital extends Component {
+    constructor(props){
+        super(props);
 
-//     const handleClickShowPassword = () => {
-//         setValues(
-//             { 
-//                 ...values, showPassword: !values.showPassword 
-//             }
-//         );
-//       };
-      
-//     const handleMouseDownPassword = (event) => {
-//         event.preventDefault();
-//     };
+        this.state = {
+            username: "",
+            password: ""
+        };
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-//     const handlePasswordChange = (prop) => (event) => {
-//         setValues(
-//             {
-//              ...values, [prop]: event.target.value 
-//             }
-//         );
-//     };
-
-//     return (
+    handleFormSubmit = event => {
+        event.preventDefault();
+    
+        const endpoint = "http://localhost:8010/api/auth/signin";
+    
+        const username = this.state.username;
+        const password = this.state.password;
         
-//         <div>
-//             <Navigation Tabchange="Sign in as user" url="/login"/>
-//             <Container className="mt-5">
-//                 <Row>
-                    
-//                     <div className="w-50 bg-white-70 center br4">
-//                         <h1> Sign in as Hospital</h1> 
-//                         <Col lg={4} md={6} sm={12} className="mt-5 p-3">
-//                             <img className="icon-img mt1" src={loginIcon} alt="icon"/>
-//                             <Form>
-//                                 <Input
-//                                     placeholder ="Email"
-//                                     className ="ph3 br4 pv3"
-//                                     type= {"email"}
-                                   
-//                                     onChange={handlePasswordChange("email")}
-//                                     value={values.email}
+        const user_object = {
+          username: username,
+          password: password
+        };
+    
+        axios.post(endpoint, user_object).then(res => {
+            this.props.history.push("/");
+          
+        }).catch(() => {
+            alert("Invalid Credentials")
+        });
+        
+      };
+    
+    
+
+    handleChange (event) {
+        this.setState(
+            {
+            [event.target.name] 
+                : event.target.value 
+            }
+        );
+    };
+
+    render() {
+        return(
+            <div>
+                <Navigation Tabchange="Hospital Register" url="/hospitalregister" />
+                <Container className="mt-5">
+                    <Row>
+                        
+                        <div className="w-50 bg-white-70 center br4">
+                            <h1>Hospital Sign in</h1> 
+                            <Col lg={4} md={6} sm={12} className="mt-5 p-3">
+                                <img className="icon-img mt1" src={loginIcon} alt="icon"/>
+                                <Form >
+                                    <Input
+                                        placeholder ="Username"
+                                        className ="ph3 br4 pv3"
+                                        type= {"text"}
+                                        name="username"
+                                        value={this.state.username}
+                                        onChange = {this.handleChange}
+                           
+                                    
+                                    />
+                                    <br />
+                                
+                                    <Input
+                                        placeholder ="Password"
+                                        className ="ph3 br4 pv3"
+                                        type={"password"}
+                                        name="password"
+                                        value={this.state.password}
+                                        onChange = {this.handleChange}
                                   
-//                                 />
-//                                 <br />
-                             
-//                                 <Input
-//                                     placeholder ="Password"
-//                                     className ="ph3 br4 pv3"
-//                                     type={values.showPassword ? "text" : "password"}
-//                                     onChange={handlePasswordChange("password")}
-//                                     value={values.password}
+                                    
+                                    />
+                                    <br />
+                                    
                                    
-//                                 />
-//                                 <br />
-                                
-//                                 <strong>
-//                                     View Password
-//                                 </strong>
-//                                 <IconButton
-//                                     className="grow"
-//                                     onClick={handleClickShowPassword}
-//                                     onMouseDown={handleMouseDownPassword} 
-//                                 >
-                                    
-//                                     {values.showPassword ? <Visibility /> : <VisibilityOff />}
-//                                 </IconButton>
-                                
-//                                 <br />
-                                
-//                                 <h4 className="ma0 grow ">Forgot Password? <a className="dim link" href="#0">Click Here</a></h4>
-                                
-//                                 <Row>
-//                                     <Link to={"/hospitalregister"}>
-//                                         <Button 
-//                                             variant="pa2 mv3 mr4 br-pill w-30 b" 
-//                                             className ="backy f5 grow"
-//                                             type="submit"
-//                                         >Sign up</Button>
-//                                     </Link>
-                                    
-//                                     <Button 
-//                                         variant=" grow pa2 mv3 br-pill w-30  b" 
-//                                         type="submit"
-//                                         className ="bg-white black-90 f5"
-//                                     >Sign in</Button> 
-//                                 </Row>
                               
-//                             </Form>
-//                         </Col>
-//                     </div>
-//                     <Col lg={8} md={6} sm={12}>
-//                         <img className="w-100" src={uiImg} alt=""/>
-//                     </Col>
-//                 </Row>
-//             </Container>
-            
-//         </div>
+                                    <h4 className="mt3 grow ">Forgot Password? <Link className="dim link" to={"/forgotpassword"}>Click Here</Link></h4>
+                                    
+                                    <Button 
+                                        variant="pa2 mv3 br-pill w-30 b" 
+                                        className ="backy f5 grow"
+                                        type="submit"
+                                        onClick = {this.handleFormSubmit}
+                                    >Sign in</Button>
+                                
+                              
+                                
+                            
+                                </Form>
+                            </Col>
+                        </div>
+                        
+                    </Row>
+                </Container>
+                
+            </div>
 
+        );
+    }
+}
 
-//     );
-// };
-
-// export default Login;
+export default Loginhospital;

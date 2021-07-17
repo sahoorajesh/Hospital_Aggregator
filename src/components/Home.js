@@ -21,7 +21,7 @@ function Home(){
     const handleSearch = () => {
         debugger
         
-        const newData = userData.filter(x => x.name == (name =='' ? x.name : name));
+        const newData = userData.filter(x => x.name === (name ==='' ? x.name : name));
         setUserData(newData);
 
     };

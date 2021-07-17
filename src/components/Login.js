@@ -24,7 +24,7 @@ class Login extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
     
-        const endpoint = "http://localhost:8010/api/auth/signin";
+        const endpoint = "http://localhost:8010/api/test/admin/signin";
     
         const username = this.state.username;
         const password = this.state.password;
@@ -35,25 +35,14 @@ class Login extends Component {
         };
     
         axios.post(endpoint, user_object).then(res => {
-            localStorage.setItem("authorization", res.data.token);
-            
-            return this.handleDashboard();
-               
+            this.props.history.push("/admin");
+          
         }).catch(() => {
             alert("Invalid Credentials")
         });
         
       };
     
-    handleDashboard() {
-        axios.get("http://localhost:8010/api/test/hospital").then(res => {
-            if (res.data === "Hospital Content") {
-                this.props.history.push("/");
-            } else {
-                alert("Authentication failure");
-            }
-        });
-    }
     
 
     handleChange (event) {
@@ -73,7 +62,7 @@ class Login extends Component {
                     <Row>
                         
                         <div className="w-50 bg-white-70 center br4">
-                            <h1> Sign in</h1> 
+                            <h1> Admin Sign in</h1> 
                             <Col lg={4} md={6} sm={12} className="mt-5 p-3">
                                 <img className="icon-img mt1" src={loginIcon} alt="icon"/>
                                 <Form >
@@ -104,7 +93,7 @@ class Login extends Component {
                                    
                               
                                     <h4 className="mt3 grow ">Forgot Password? <Link className="dim link" to={"/forgotpassword"}>Click Here</Link></h4>
-                                    <h4 className="mt3 grow ">Wanna Join us? <Link className="dim link" to={"/userregister"}>Sign up</Link></h4>
+                                    <h4 className="mt3 grow ">Admin Signup? <Link className="dim link" to={"/userregister"}>Sign up</Link></h4>
                                     
                                 
                                     
