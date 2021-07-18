@@ -4,7 +4,6 @@ import hospitalicon from '../images/hospital.jpg';
 import axios from "axios";
 import {Col, Container,Row} from "react-bootstrap";
 import "./Hospitalregister.css";
-import {Link } from "react-router-dom";
 import { Component } from 'react';
 
 class Hospitalregister extends Component {
@@ -87,10 +86,10 @@ class Hospitalregister extends Component {
 		});
     
         axios.post(endpoint, hospital_user).then(res => {
-            localStorage.setItem("authorization", res.data.token);
-			if(res.status === 200){
-				alert("Hospital Registered Successfully")
-			}     
+			
+			alert("Hospital Registered Successfully")
+			this.props.history.push("/hospitallogin");
+			     
         })
         
       };
@@ -206,14 +205,11 @@ class Hospitalregister extends Component {
 										
 									</fieldset>
 									
-									<div className="">
+									<div>
 									<input className="b ph3 pv2 input-reset ba btn-primary bn grow pointer f4 dib" type="submit" onClick={this.handleFormSubmit} value="Sign up as Hospital" />
 									</div>
 									
-									<div className="lh-copy mt3">
-									{/* <Link className="f4 grow link dim black db" to={"/login"}>Sign in as Hospital</Link> */}
-									<h4 className="ma0 grow ">Forgot Password? <Link className="dim link" to={"/forgotpassword"}>Click Here</Link></h4>
-									</div>
+									
 								</form>
 							</Col>
 						</div>

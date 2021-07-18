@@ -1,10 +1,9 @@
 import React from 'react';
 import Navigation from "./Navigation";
 import hospitalicon from '../images/hospital.jpg';
-// import axios from "axios";
+import axios from "axios";
 import {Col, Container,Row} from "react-bootstrap";
 import "./Hospitalregister.css";
-// import {Link } from "react-router-dom";
 import { Component } from 'react';
 
 class Enquiry extends Component {
@@ -12,8 +11,8 @@ class Enquiry extends Component {
         super(props);
 
         this.state = {
-			custname : "",
-			custAddress : "",
+			name : "",
+			address : "",
 			email : "",
 			mobile : "",
 			query : "",
@@ -28,42 +27,50 @@ class Enquiry extends Component {
 	handleFormSubmit = event => {
         event.preventDefault();
     
-        // const endpoint = "http://localhost:8010/api/auth/signup";
+        const endpoint = "http://localhost:8010/api/auth/enquiry";
 		
-		// const { custname, custAddress,
-		// 		email, mobile,
-		// 		query } = this.state;
+		const { name, address,
+				email, mobile,
+				query } = this.state;
 
 
-        // const hospital_user = {
-		// 	custname: custname,
-		// 	custAddress: custAddress,
-		// 	email: email,
-		// 	mobile: mobile,
-		// 	query: query,
-		// };
+        const enquiry = {
+			name: name,
+			address: address,
+			email: email,
+			mobile: mobile,
+			query: query,
+		};
 
 		this.setState({
-			custname : "",
-			custAddress : "",
+			name : "",
+			address : "",
 			email : "",
 			mobile : "",
 			query : "",
         });
-    
+		
+		axios.post(endpoint, enquiry).then(res => {
+			
+			alert("Enquiry Submitted Successfully")
+			this.props.history.push("/");
+		  
+        })
         
-    };
+      };
+        
+    
 
-    handleChange (event) {
+    handleChange (e) {
         this.setState(
             {
-            [event.target.name] 
-                : event.target.value 
+            [e.target.name] 
+                : e.target.value 
             }
         );
     };
 
-	
+
 
 	render() {
 		return(
@@ -84,12 +91,12 @@ class Enquiry extends Component {
 									
 										<div className="mt3">
 											<label className="db fw6 lh-copy f4">Your Name:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="custname" required/>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="name"  value={this.state.name} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
 											<label className="db fw6 lh-copy f4">Address:</label>
-											<textarea className="pa2 input-reset ba bg-transparent w-75" rows = "5" cols = "60" name = "custAddress" value={this.state.hospAddress} onChange={this.handleChange} required/>
+											<textarea className="pa2 input-reset ba bg-transparent w-75" rows = "5" cols = "60" name = "address" value={this.state.address} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
@@ -99,17 +106,17 @@ class Enquiry extends Component {
 
 										<div className="mt3">
 											<label className="db fw6 lh-copy f4">Contact-details:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="tel" pattern="[0-9]{4}[0-9]{2}[0-9]{4}" name="mobile" placeholder="XXXX-XX-XXXX"  value={this.state.mobile} onChange={this.handleChange} required/>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="tel" pattern="[0-9]{4}[0-9]{2}[0-9]{4}" name="mobile" placeholder="10 digit mobile number"  value={this.state.mobile} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
 											<label className="db fw6 lh-copy f4">Your Query in short:</label>
-											<textarea className="pa2 input-reset ba bg-transparent w-75" rows = "5" cols = "60" name = "query" value={this.state.aboutus} onChange={this.handleChange} required/>
+											<textarea className="pa2 input-reset ba bg-transparent w-75" rows = "5" cols = "60" name = "query" value={this.state.query} onChange={this.handleChange} required/>
 										</div>										
 										
 									</fieldset>
 									
-									<div className="">
+									<div>
 									<input className="b ph3 pv2 mv2 input-reset ba btn-primary bn grow pointer f4 dib" type="submit" onClick={this.handleFormSubmit} value="Submit" />
 									</div>
 
@@ -127,4 +134,3 @@ class Enquiry extends Component {
 }
 
 export default Enquiry;
-// Sanket_testing
