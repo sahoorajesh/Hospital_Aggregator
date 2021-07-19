@@ -4,7 +4,6 @@ import hospitalicon from '../images/hospital.jpg';
 import axios from "axios";
 import {Col, Container,Row} from "react-bootstrap";
 import "./Hospitalregister.css";
-import {Link } from "react-router-dom";
 import { Component } from 'react';
 
 class Hospitalregister extends Component {
@@ -34,7 +33,8 @@ class Hospitalregister extends Component {
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-    }
+	
+	}
 
 	handleFormSubmit = event => {
         event.preventDefault();
@@ -86,16 +86,11 @@ class Hospitalregister extends Component {
 		});
     
         axios.post(endpoint, hospital_user).then(res => {
-            localStorage.setItem("authorization", res.data.token);
-			if(res.status === 200){
-				alert("Hospital Registered Successfully")
-			}
 			
-               
+			alert("Hospital Registered Successfully")
+			this.props.history.push("/hospitallogin");
+			     
         })
-		.catch((error) => {
-            alert(error)
-        });
         
       };
     
@@ -107,12 +102,13 @@ class Hospitalregister extends Component {
                 : event.target.value 
             }
         );
+		console.log(this.state.hospspec,event.target.name,event.target.value)
     };
 
 	render() {
 		return(
 			<div>
-				<Navigation Tabchange="Sign in" url="/login"/>
+				<Navigation Tabchange="Hospital Sign in" url="/hospitallogin"/>
 				<Container className="mt-5 body-info">
 					<Row>
 					<br/>
@@ -133,7 +129,25 @@ class Hospitalregister extends Component {
 
 										<div className="mt3">
 											<label className="db fw6 lh-copy f4">Hospital-Speciality:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" name="hospspec"  value={this.state.hospspec} onChange={this.handleChange} required/>
+											<select className="pa2 input-reset ba bg-transparent w-75" type="text" name="hospspec"  value={this.state.hospspec} onChange={this.handleChange} required>
+												<option value="Select one speciality">Select one Speciality</option>
+												<option value="skin">skin</option>
+												<option value="nose">nose</option>
+												<option value="ear">ear</option>
+												<option value="eye">eye</option>
+												<option value="cardio">cardio</option>
+												<option value="neuro">neuro</option>
+												<option value="orthopadeic">orthopadeic</option>
+												<option value="physiotherapist">physiotherapist</option>
+												<option value="vetenerian">vetenerian</option>
+												<option value="Pathology">Pathology</option>
+												<option value="Pediatrics">Pediatrics</option>
+												<option value="chest">chest</option>
+												<option value="Urology">Urology</option>
+												<option value="Psychatrist">Psychatrist</option>
+												
+												
+											</select>	
 										</div>
 										
 										<div className="mt3">
@@ -164,17 +178,17 @@ class Hospitalregister extends Component {
 
 										<div className="mt3">
 											<label className="db fw6 lh-copy f4">Website(if any):</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="url" name="website"  value={this.state.website} onChange={this.handleChange} required/>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="url" name="website" placeholder="include http" value={this.state.website} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
 											<label className="db fw6 lh-copy f4">Contact-details:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="tel" pattern="[0-9]{4}[0-9]{2}[0-9]{4}" name="mobile" placeholder="XXXX-XX-XXXX"  value={this.state.mobile} onChange={this.handleChange} required/>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="tel" pattern="[0-9]{4}[0-9]{2}[0-9]{4}" name="mobile" placeholder="10 digit mobile number"  value={this.state.mobile} onChange={this.handleChange} required/>
 										</div>
 
 										<div className="mt3">
 											<label className="db fw6 lh-copy f4">About hospital in short:</label>
-											<textarea className="pa2 input-reset ba bg-transparent w-75" rows = "5" cols = "60" name = "aboutus" value={this.state.aboutus} onChange={this.handleChange} required/>
+											<textarea className="pa2 input-reset ba bg-transparent w-75" rows = "5" cols = "60" name = "aboutus" placeholder="about you inshort"value={this.state.aboutus} onChange={this.handleChange} required/>
 										</div>
 										
 										
@@ -191,14 +205,11 @@ class Hospitalregister extends Component {
 										
 									</fieldset>
 									
-									<div className="">
+									<div>
 									<input className="b ph3 pv2 input-reset ba btn-primary bn grow pointer f4 dib" type="submit" onClick={this.handleFormSubmit} value="Sign up as Hospital" />
 									</div>
 									
-									<div className="lh-copy mt3">
-									{/* <Link className="f4 grow link dim black db" to={"/login"}>Sign in as Hospital</Link> */}
-									<h4 className="ma0 grow ">Forgot Password? <Link className="dim link" to={"/forgotpassword"}>Click Here</Link></h4>
-									</div>
+									
 								</form>
 							</Col>
 						</div>

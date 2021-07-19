@@ -10,13 +10,7 @@ function Userregister() {
                 <form> 
                 <h2>Sign Up</h2>
                 
-                <div className="form-group">
-                    <div className="input-group">
-                        
-                        <i className="fa fa-user mr2"></i>
-                        <input type="text" className="form-control" name="name" placeholder="name" required="required" />
-                    </div>
-                </div>
+                
                 <div className="form-group">
                     <div className="input-group">
                         <i className="fa fa-user mr2"></i>
@@ -37,14 +31,7 @@ function Userregister() {
                         <input type="text" className="form-control" name="password" placeholder="Password" required="required" />
                     </div>
                 </div>
-                <div className="form-group">
-                    <div className="input-group">
-                        
-                        <i className="fa fa-lock"></i>
-                        <i className="fa fa-check mr2"></i>
-                        <input type="text" className="form-control" name="cpassword" placeholder="Confirm Password" required="required" />
-                    </div>
-                </div>
+                
                 <div className="form-group ">
                     <button type="submit" className="btn btn-outline-primary">Sign Up</button>
                 </div>
