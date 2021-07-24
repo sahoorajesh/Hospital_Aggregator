@@ -25,11 +25,13 @@ function Home(){
         <div className="yu8 bg-white-30">
             <Navigation Tabchange="Hospital Register" url="/hospitalregister" Tabchange1="Sign in" url1="/login"/>
             <div> 
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
-                <form action="">
-                    <input type="search"/>
-  <i class="fa fa-search"></i>
-                </form>
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+<form class="example" >
+  <input type="text" placeholder="Search.." name="search"/>
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
             </div>
             {/* Search bar */}
             
