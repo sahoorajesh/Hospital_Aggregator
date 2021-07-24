@@ -27,8 +27,8 @@ class Hospitalregister extends Component {
 			showButton: true,
 			showDetails: false,
 			showapproveStatus: false,
-			showrejectStatus:false
-			
+			showrejectStatus:false,
+			imagelink:""
         };
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -46,7 +46,7 @@ class Hospitalregister extends Component {
 				email, website, mobile,
 				aboutus, username, password, roles,
 				showButton,showDetails,
-				showapproveStatus,showrejectStatus} = this.state;
+				showapproveStatus,showrejectStatus,imagelink} = this.state;
 
 
         const hospital_user = {
@@ -67,6 +67,7 @@ class Hospitalregister extends Component {
 			showDetails:showDetails,
 			showapproveStatus:showapproveStatus,
 			showrejectStatus:showrejectStatus,
+			imagelink:imagelink
 			
         };
 
@@ -83,6 +84,7 @@ class Hospitalregister extends Component {
 			aboutus : "",
             username : "",
             password : "",
+			imagelink:""
 		});
     
         axios.post(endpoint, hospital_user).then(res => {
@@ -202,6 +204,10 @@ class Hospitalregister extends Component {
 											<input className="b pa2 input-reset ba bg-transparent w-75" type="password" name="password"  id="password"  value={this.state.password} onChange={this.handleChange} required/>
 										</div>
 										
+										<div className="mt3">
+											<label className="db fw6 lh-copy f4">Image Link:</label>
+											<input className="pa2 input-reset ba bg-transparent w-75" type="text" placeholder="Provide link for your avatar" name="imagelink" value={this.state.imagelink} onChange={this.handleChange} />
+										</div>
 										
 									</fieldset>
 									

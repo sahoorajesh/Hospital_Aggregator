@@ -4,6 +4,7 @@ import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import { Component } from 'react';
 import "./Admin.css"
+import Cardlist from "./Cardlist"
 // import {Row} from "react-bootstrap";
 class admin extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class admin extends Component {
         axios.get("http://localhost:8010/api/test/getalluser")
         .then(res => {
             this.setState({ hospital: res.data });
-            console.log(this.state.hospital);
+            // console.log(this.state.hospital);
         });
     }
 
@@ -48,7 +49,7 @@ class admin extends Component {
             showDetails : this.state.hospital[id].showDetails,
             showapproveStatus : this.state.hospital[id].showapproveStatus,
             showrejectStatus : true,
-            
+            imagelink:this.state.hospital[id].imagelink
         };
         
         axios.put(("http://localhost:8010/api/test/edithospital/" + un),data)
@@ -80,6 +81,7 @@ class admin extends Component {
             showDetails : true,
             showapproveStatus : true,
             showrejectStatus : this.state.hospital[id].showrejectStatus,
+            imagelink:this.state.hospital[id].imagelink
             
         };
         
@@ -109,7 +111,8 @@ class admin extends Component {
                     List of new Hospitals Registered 
                 </strong>
                <hr className=" bg-black"/>
-                <table className="tl">
+               <Cardlist hospitals={this.state.hospital}/ >
+                {/* <table className="tl">
                     
                     <tbody>
                         {   
@@ -119,25 +122,25 @@ class admin extends Component {
                                             <ul>
                                                 <li>
                                                     <dl>
-                                                        <dt className="mb2 margin"><strong className="f4"> Hospital Name: </strong>{hospital.hospname}</dt>
+                                                        <dt className="mb2 margin">
+                                                            <strong className="f3"> Hospital Name: </strong>{hospital.hospname} 
+                                                            <strong className="f3 ml7">Speciality: </strong> {hospital.hospspec}
+                                                            <strong className="f3 ml7">District:  </strong>{hospital.district}
+                                                        </dt>
                                                         
-                                                        <dt className="mb2 margin"><strong className="f4">Speciality: </strong> {hospital.hospspec}</dt>
+                                                        <dt className="mb2 margin">
+                                                            <strong className="f3">Address:  </strong>{hospital.hospAddress}
+                                                            <strong className="f3 ml6">Ownership:  </strong>{hospital.ownership}
+                                                            <strong className="f3 ml7">Year: </strong>{hospital.year}
+                                                        </dt>
                                                         
-                                                        <dt className="mb2 margin"><strong className="f4">District:  </strong>{hospital.district}</dt>
-                                                        
-                                                        <dt className="mb2 margin"><strong className="f4">Address:  </strong>{hospital.hospAddress}</dt>
-                                                        
-                                                        <dt className="mb2 margin"><strong className="f4">Ownership:  </strong>{hospital.ownership}</dt>
-                                                        
-                                                        <dt className="mb2 margin"><strong className="f4">Year: </strong>{hospital.year}</dt>
-                                                        
-                                                        <dt className="mb2 margin"><strong className="f4">Email: </strong>{hospital.email}</dt>
-                                                        
-                                                        <dt className="mb2 margin"><strong className="f4">Website:  </strong>{hospital.website}</dt>
-                                                        
-                                                        <dt className="mb2 margin"><strong className="f4">Contact  </strong>{hospital.mobile}</dt>
-                                                        
-                                                        <dt className="mb2 margin"><strong className="f4">About us:  </strong>{hospital.aboutus}</dt>
+                                                        <dt className="mb2 margin">
+                                                            <strong className="f3">Email: </strong>{hospital.email}
+                                                            <strong className="f3  ml7">Website:  </strong>{hospital.website}
+                                                            <strong className="f3 ml6">Contact  </strong>{hospital.mobile}
+                                                        </dt>
+                                                       
+                                                        <dt className="mb2 margin"><strong className="f3">About us:  </strong>{hospital.aboutus}</dt>
                                                     </dl>
                                               </li>
                                               </ul>
@@ -148,8 +151,8 @@ class admin extends Component {
                                             hospital.showButton 
                                                 && 
                                                     <div className="flex">
-                                                        <button className="btn f4  grow mr3 " onClick={()=>this.editApprove(hospital.id,hospital.username)}>Approve</button>
-                                                        <button className="btn f4 b bg-dark-red white bn  grow mr3" onClick={()=>this.editReject(hospital.id,hospital.username) }>Reject</button>
+                                                        <button className="btn f3  grow mr3 " onClick={()=>this.editApprove(hospital.id,hospital.username)}>Approve</button>
+                                                        <button className="btn f3 b bg-dark-red white bn  grow mr3" onClick={()=>this.editReject(hospital.id,hospital.username) }>Reject</button>
                                                         
                                                     </div>
                                         }
@@ -174,7 +177,7 @@ class admin extends Component {
                             )
                         }
                     </tbody>
-                </table>
+                </table> */}
 
             </div>
         );
