@@ -55,6 +55,7 @@
     
 
 }
+
 .outline{
     outline: 0.5px;
 }
@@ -63,11 +64,14 @@
 }
 
 #btn1{
-    border-radius: 50px;
+    border-radius: 60px;
+    
 }
-
 #btn2{
-    border-radius: 50px;
+    
+    width: 150px ;
+    height: 40px;
+
 }
 
 
@@ -91,6 +95,7 @@
     
 
 }
+
 th{
     
     padding: 20px 20px;
@@ -186,5 +191,43 @@ th{
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Style the search field */
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    
+    width: 30%;
+    background: #f1f1f1;
+    bottom: -100px;
+  }
+  
+  /* Style the submit button */
+  form.example button {
+
+    width: 5%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  
+  form.example button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 
 

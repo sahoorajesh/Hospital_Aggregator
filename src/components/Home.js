@@ -8,7 +8,7 @@ import Navigation from "./Navigation";
 function Home(){
     const[userData,setUserData]=React.useState([]);
 
-    const[name,setName]=React.useState('');
+    
     React.useEffect(()=>{
         const data=[
             {name:"Hos1",spec:"Cardio"},
@@ -18,25 +18,21 @@ function Home(){
         ];
         setUserData(data);
     },[])
-    const handleSearch = () => {
-        debugger
-        
-        const newData = userData.filter(x => x.name === (name ==='' ? x.name : name));
-        setUserData(newData);
-
-    };
+    
+   
     
     return (
         <div className="yu8 bg-white-30">
             <Navigation Tabchange="Hospital Register" url="/hospitalregister" Tabchange1="Sign in" url1="/login"/>
-            <div> <form>
-                
-                <input className="black pa2 mv2" type="text" placeholder="Search.." name="search"
-                onChange={(e)=>setName(e.target.value)}/>
+            <div> 
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-                <button className="black pa2 ma2" 
-                onClick={()=> handleSearch()} ><i className="fa fa-search "></i></button>
-            </form></div>
+<form class="example" >
+  <input type="text" placeholder="Search.." name="search"/>
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+            </div>
             {/* Search bar */}
             
 
@@ -68,7 +64,7 @@ function Home(){
                             <td className="kj4"><big>{item.spec}</big></td>
                             <td>
                                 <button
-                                    className="close2 btn btn-outline-primary mr-2" id="btn1">
+                                    className=" btn btn-outline-primary mr-2" id="btn2">
                                     <b> SEND ENQUIRY </b>
                                 </button></td>
                             <td>
