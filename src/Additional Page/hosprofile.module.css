@@ -194,21 +194,11 @@
     padding: 0;
   }
   
-  /**
-   * Remove trailing margins from nested lists.
-   */
-  li > ol,
-  li > ul {
-    margin-bottom: 0;
-  }
   
   /**
    * Remove default table spacing.
    */
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
+  
   
   /**
    * 1. Reset Chrome and Firefox behaviour which sets a `min-width: min-content;`
@@ -220,11 +210,6 @@
     border: 0;
   }
   
-  button {
-    outline: none;
-    background: none;
-    
-  }
   
   /* ==========================================================================
      #PAGE WRAPPER
@@ -392,7 +377,7 @@
   /* ==========================================================================
      #BUTTON
      ========================================================================== */
-  .btncss {
+  .btn {
     display: inline-block;
     line-height: 50px;
     padding: 0 50px;

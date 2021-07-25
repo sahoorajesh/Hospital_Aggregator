@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Hosprofile.css"
+import "./hosprofile.module.css"
 
 
 
