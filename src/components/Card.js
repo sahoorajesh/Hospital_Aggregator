@@ -103,42 +103,49 @@ class Card extends Component {
           {
           this.props.showapproveStatus
               &&
-                  <div>
-                      <strong className="f3 black mh5">Status Approved!!!</strong>
+                  <div className="grow">
+                      <strong className="f3 black mh5 dark-green">Status Approved!!!</strong>
                   </div>                                        
           }
 
           {
           this.props.showrejectStatus
               &&
-              <div>
-                 <strong className="f3 black mh5">Status Rejected!!!</strong>
+              <div className="grow">
+                 <strong className="f3 black mh5 dark-red ">Status Rejected!!!</strong>
               </div>                                        
           }
-            
+
               <div className="pb2 f5">
+                <img className="avatar mh5 mv2" src={this.props.imagelink} alt="avatar"/>
+              </div>
+
+            
+              <div className="pb2 f5 tc">
                 <b className ="f4">Hospital Name: </b><i>{this.props.hospname}</i>
               </div>
 
-              <div className="pb2 f5">
+              <div className="pb2 f5 tc">
                 <b className ="f4">Hospital Speciality:  </b><i>{this.props.hospspec}</i>
               </div>
 
-              <div className="pb2 f5">
-                <b className ="f4">About us:  </b><i>{this.props.aboutus}</i>
-              </div>
+             
             
           </div>
           <div className="lower">
             <h3>
-              <div className="pb2 f">
-                <b className ="f4">Hospital district:  </b><i>{this.props.district}</i>
+              <div className="pb2 f5">
+                <b className ="f4">About Hospital:  </b><i>{this.props.aboutus}</i>
               </div>
-
+          
               <div className="pb2 f5">
                 <b className ="f4">Address:  </b><i>{this.props.hospAddress}</i>
               </div>
-              
+
+              <div className="pb2 f">
+                <b className ="f4">Hospital district:  </b><i>{this.props.district}</i>
+              </div>
+               
               <div className="pb2 f5">
                 <b className ="f4">Ownership:  </b><i>{this.props.ownership}</i>
               </div>

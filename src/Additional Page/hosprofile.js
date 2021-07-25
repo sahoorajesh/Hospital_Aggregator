@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./hosprofile.css"
+import "./Hosprofile.css"
 
 
 
-function hosprofile() {
+function Hosprofile() {
 
 
 
@@ -148,8 +148,8 @@ function hosprofile() {
 
 
 
-                                    <button class="btn btn--radius-2 btn--red" type="submit">Edit</button>
-                                    <button class="btn btn--radius-2 btn--blue fl" type="submit">Save</button>
+                                    <button class="btncss btn--radius-2 btn--red" type="submit">Edit</button>
+                                    <button class="btncss btn--radius-2 btn--blue fl" type="submit">Save</button>
 
                                 </form>
                             </div>
@@ -169,6 +169,6 @@ function hosprofile() {
 }
 
 
-export default hosprofile;
+export default Hosprofile;
 
 

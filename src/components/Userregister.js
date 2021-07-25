@@ -27,7 +27,7 @@ function Userregister() {
                 <div className="form-group ">
                     <div className="input-group">
                        
-                        <i className="fa fa-lock mr3"></i>
+                        <i className="fa fa-lock mr2"></i>
                         <input type="text" className="form-control" name="password" placeholder="Password" required="required" />
                     </div>
                 </div>

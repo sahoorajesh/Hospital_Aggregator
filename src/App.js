@@ -9,7 +9,7 @@ import ResetPassword from "./components/ResetPassword";
 import Loginhospital from "./components/Loginhospital";
 import Enquiry from "./components/Enquiry";
 import Admin from "./components/Admin"
-
+import Hosprofile from "./Additional Page/Hosprofile";
 class App extends Component{
   render(){
     return (
@@ -26,7 +26,7 @@ class App extends Component{
                 <Route path = "/resetpassword" component = {ResetPassword}/>
                 <Route path = "/admin" component = {Admin}/>
                 <Route path = "/enquiry" component = {Enquiry}/>
-                
+                <Route path="/hosprofile" component={Hosprofile}/>
             </Switch>
        
         

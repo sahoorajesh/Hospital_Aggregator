@@ -33,7 +33,7 @@ class Hospitalregister extends Component {
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-	
+		// this.handleImage = this.handleImage.bind(this);
 	}
 
 	handleFormSubmit = event => {
@@ -41,14 +41,16 @@ class Hospitalregister extends Component {
     
         const endpoint = "http://localhost:8010/api/auth/signup";
 		
-		const { hospname, hospspec, district,
+		var { hospname, hospspec, district,
 				hospAddress, ownership, year,
 				email, website, mobile,
 				aboutus, username, password, roles,
 				showButton,showDetails,
 				showapproveStatus,showrejectStatus,imagelink} = this.state;
 
-
+		if(imagelink === ""){
+			imagelink="https://www.imaswmp.in/wp-content/uploads/default-avatar.jpg"
+		}
         const hospital_user = {
 			hospname: hospname,
 			hospspec: hospspec,
@@ -71,21 +73,21 @@ class Hospitalregister extends Component {
 			
         };
 
-		this.setState({
-			hospname : "",
-			hospspec : "",
-			district : "",
-			hospAddress : "",
-			ownership:"",
-			year : "",
-			email : "",
-			website : "",
-			mobile : "",
-			aboutus : "",
-            username : "",
-            password : "",
-			imagelink:""
-		});
+		// this.setState({
+		// 	hospname : "",
+		// 	hospspec : "",
+		// 	district : "",
+		// 	hospAddress : "",
+		// 	ownership:"",
+		// 	year : "",
+		// 	email : "",
+		// 	website : "",
+		// 	mobile : "",
+		// 	aboutus : "",
+        //     username : "",
+        //     password : "",
+		// 	imagelink:""
+		// });
     
         axios.post(endpoint, hospital_user).then(res => {
 			
@@ -104,13 +106,34 @@ class Hospitalregister extends Component {
                 : event.target.value 
             }
         );
-		console.log(this.state.hospspec,event.target.name,event.target.value)
+		// console.log(event.target.name,event.target.value)
+		
     };
+
+	// handleImage(event){
+	// 	if(event.target.value ==="Default"){
+	// 		this.setState(
+	// 			{
+	// 				[event.target.name]:"https://www.imaswmp.in/wp-content/uploads/default-avatar.jpg"
+	// 			}
+	// 		)
+	// 	}
+	// 	else{
+	// 		this.setState(
+	// 			{
+	// 			[event.target.name] 
+	// 				: event.target.value 
+	// 			}
+	// 		);
+	// 	}
+	// 	console.log(event.target.name,event.target.value)
+		
+	// }
 
 	render() {
 		return(
 			<div>
-				<Navigation Tabchange="Hospital Sign in" url="/hospitallogin"/>
+				<Navigation Tabchange1="Admin Sign in" url1="/login" Tabchange="Hospital Sign in" url="/hospitallogin"/>
 				<Container className="mt-5 body-info">
 					<Row>
 					<br/>
@@ -206,7 +229,7 @@ class Hospitalregister extends Component {
 										
 										<div className="mt3">
 											<label className="db fw6 lh-copy f4">Image Link:</label>
-											<input className="pa2 input-reset ba bg-transparent w-75" type="text" placeholder="Provide link for your avatar" name="imagelink" value={this.state.imagelink} onChange={this.handleChange} />
+											<input className="pa2 input-reset ba bg-transparent w-75" type="text" placeholder="Link for your avatar(Type 'Default' for Default)" name="imagelink" value={this.state.imagelink} onChange={this.handleChange} />
 										</div>
 										
 									</fieldset>
