@@ -93,7 +93,7 @@ class Card extends Component {
     render() {
       return (
         <div
-          className={"tc br3 ma4 bw2 dib container " + (this.state.open ? "expand" : "")}
+          className={"tc br3 ma4 bw2 dib cardcontainer " + (this.state.open ? "expand" : "")}
           onClick={this.handleClick}
           
         >
