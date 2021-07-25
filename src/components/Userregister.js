@@ -13,21 +13,21 @@ function Userregister() {
                 
                 <div className="form-group">
                     <div className="input-group">
-                        <i className="fa fa-user mr2"></i>
+                      
                         <input type="text" className="form-control" name="username" placeholder="Username" required="required" />
                     </div>
                 </div>
                 <div className="form-group">
                     <div className="input-group">
                         
-                        <i className="fa fa-paper-plane mr2"></i>
+            
                         <input type="email" className="form-control" name="email" placeholder="Email Address" required="required" />
                     </div>
                 </div>
                 <div className="form-group ">
                     <div className="input-group">
                        
-                        <i className="fa fa-lock mr2"></i>
+                       
                         <input type="text" className="form-control" name="password" placeholder="Password" required="required" />
                     </div>
                 </div>
