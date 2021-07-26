@@ -713,9 +713,9 @@
      #TITLE
      ========================================================================== */
   .title {
-    font-size: 24px;
-    text-transform: uppercase;
-    font-weight: 700;
+    font-size: 22px;
+    
+    font-weight: 650;
     text-align: center;
     color: #fff;
   }
