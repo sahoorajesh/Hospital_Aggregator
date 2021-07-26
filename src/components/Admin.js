@@ -10,18 +10,21 @@ class Admin extends Component {
         super(props);
         this.state = {
           hospital: [],
-          
+          searchfield:"",
+          filteredHospitals:[]
         };
         
         this.editReject = this.editReject.bind(this);
         this.editApprove = this.editApprove.bind(this);
+        this.handleChange = this.handleChange.bind(this);
       };
     
     componentDidMount() {
         axios.get("http://localhost:8010/api/test/getalluser")
         .then(res => {
-            this.setState({ hospital: res.data });
-            // console.log(this.state.hospital);
+            this.setState({ hospital: res.data,
+            filteredHospitals:res.data });
+           
         });
     }
 
@@ -94,9 +97,49 @@ class Admin extends Component {
           
       }
 
+      handleChange = (event) => {
+        this.setState(
+            { 
+                searchfield: event.target.value 
+            })
+
+        if(event.target.value === "Accepted"){
+            this.setState({
+                filteredHospitals: this.state.hospital.filter(hospital =>{
+                    return hospital.showapproveStatus===true;
+                    })
+            })
+        }
+
+        else if(event.target.value === "Rejected"){
+            this.setState({
+                filteredHospitals: this.state.hospital.filter(hospital =>{
+                    return hospital.showrejectStatus===true;
+                    })
+            })
+        }
+
+        else if(event.target.value === "New"){
+            this.setState({
+                filteredHospitals: this.state.hospital.filter(hospital =>{
+                    return hospital.showButton===true;
+                    })
+            })
+        }
+
+        else if(event.target.value === ""){
+            this.setState({
+                filteredHospitals: this.state.hospital
+            })
+        }
+        
+      }
+
     render() {
       
+        
         return(
+            
             <div className="bg-white">
                 <Navigation Tabchange="Logout" url="/login" Tabchange1="Welcome, Admin"/>
                 <h1>
@@ -110,7 +153,21 @@ class Admin extends Component {
                     List of new Hospitals Registered 
                 </strong>
                <hr className=" bg-black"/>
-               <Cardlist hospitals={this.state.hospital}/ >
+               
+               <div className='pa2'>
+                    <strong className="f4 mr3">Show All:</strong>
+                    <input
+                        className='pa3 ba bg-lightest-blue w-30'
+                        type='search'
+                        placeholder='Type Accepted Or Rejected or New'
+                        onChange={this.handleChange}
+                    />
+                </div>
+                
+               
+                <Cardlist hospitals={this.state.filteredHospitals}/ >
+             	
+               
                
             </div>
         );

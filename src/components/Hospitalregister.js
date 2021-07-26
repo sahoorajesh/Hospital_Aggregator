@@ -33,7 +33,7 @@ class Hospitalregister extends Component {
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-		// this.handleImage = this.handleImage.bind(this);
+		
 	}
 
 	handleFormSubmit = event => {
@@ -73,21 +73,21 @@ class Hospitalregister extends Component {
 			
         };
 
-		// this.setState({
-		// 	hospname : "",
-		// 	hospspec : "",
-		// 	district : "",
-		// 	hospAddress : "",
-		// 	ownership:"",
-		// 	year : "",
-		// 	email : "",
-		// 	website : "",
-		// 	mobile : "",
-		// 	aboutus : "",
-        //     username : "",
-        //     password : "",
-		// 	imagelink:""
-		// });
+		this.setState({
+			hospname : "",
+			hospspec : "",
+			district : "",
+			hospAddress : "",
+			ownership:"",
+			year : "",
+			email : "",
+			website : "",
+			mobile : "",
+			aboutus : "",
+            username : "",
+            password : "",
+			imagelink:""
+		});
     
         axios.post(endpoint, hospital_user).then(res => {
 			
@@ -106,29 +106,10 @@ class Hospitalregister extends Component {
                 : event.target.value 
             }
         );
-		// console.log(event.target.name,event.target.value)
+		
 		
     };
 
-	// handleImage(event){
-	// 	if(event.target.value ==="Default"){
-	// 		this.setState(
-	// 			{
-	// 				[event.target.name]:"https://www.imaswmp.in/wp-content/uploads/default-avatar.jpg"
-	// 			}
-	// 		)
-	// 	}
-	// 	else{
-	// 		this.setState(
-	// 			{
-	// 			[event.target.name] 
-	// 				: event.target.value 
-	// 			}
-	// 		);
-	// 	}
-	// 	console.log(event.target.name,event.target.value)
-		
-	// }
 
 	render() {
 		return(
