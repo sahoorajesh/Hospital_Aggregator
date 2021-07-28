@@ -10,6 +10,7 @@ import Loginhospital from "./components/Loginhospital";
 import Enquiry from "./components/Enquiry";
 import Admin from "./components/Admin"
 import Hosprofile from "./components/Hosprofile";
+// test
 class App extends Component{
   render(){
     return (
