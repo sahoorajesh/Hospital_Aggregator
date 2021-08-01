@@ -29,7 +29,6 @@ class App extends Component{
                 <Route path = "/enquiry" component = {Enquiry}/>
                 <Route path="/hosprofile" component={Hosprofile}/>
             </Switch>
-       
         
       </div>
     </BrowserRouter>
