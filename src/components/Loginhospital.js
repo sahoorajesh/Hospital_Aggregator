@@ -35,7 +35,8 @@ class Loginhospital extends Component {
         };
     
         axios.post(endpoint, user_object).then(res => {
-            this.props.history.push("/");
+            // const un = res.data.username
+            this.props.history.push(`/hosprofile/${res.data.username}`);
           
         }).catch(() => {
             alert("Invalid Credentials")

@@ -36,6 +36,7 @@ class Login extends Component {
     
         axios.post(endpoint, user_object).then(res => {
             this.props.history.push("/admin");
+            console.log(res.data)
           
         }).catch(() => {
             alert("Invalid Credentials")
