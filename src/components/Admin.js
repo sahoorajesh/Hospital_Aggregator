@@ -139,7 +139,7 @@ class Admin extends Component {
         return(
             
             <div className="bg-white">
-                <Navigation Tabchange="Logout" url="/login" Tabchange1="Welcome, Admin"/>
+                <Navigation Tabchange="Logout" url="/" Tabchange1="Welcome, Admin"/>
                 <h1>
                     <strong>
                         Admin Page

@@ -6,7 +6,7 @@ import axios from 'axios';
 class Card extends Component {
    
     state = {
-      open: false,
+      open: true,
     };
 
     handleClick = () => {
@@ -93,7 +93,7 @@ class Card extends Component {
     render() {
       return (
         <div
-          className={"tc br3 ma4 bw2 dib cardcontainer " + (this.state.open ? "expand" : "")}
+          className={"tc br3 ma4 bw2 dib cardcontainer expand"}
           onClick={this.handleClick}
           
         >

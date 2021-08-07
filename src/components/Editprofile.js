@@ -60,7 +60,7 @@ class Editprofile extends Component {
     };
     axios.put("http://localhost:8010/api/test/edithospital/"+this.props.match.params.username, data)
       .then((result) => {
-        this.props.history.push("/hospprofile/"+this.props.match.params.username)
+        this.props.history.push("/hosprofile/"+this.state.hospital.username)
       });
   }
 
@@ -93,7 +93,25 @@ class Editprofile extends Component {
                                     <div class="name">Speciality</div>
                                     <div class="value">
                                         <div class="input-group">
-                                            <input class="input--style-5" type="text" name="hospspec" value= {this.state.hospital.hospspec} onChange={this.onChange}/>
+                                        <select className="input--style-5 w-100 speciality" type="text" name="hospspec"  value={this.state.hospital.hospspec} onChange={this.onChange} required>
+												<option value="Select one speciality">Select one Speciality</option>
+												<option value="skin">skin</option>
+												<option value="nose">nose</option>
+												<option value="ear">ear</option>
+												<option value="eye">eye</option>
+												<option value="cardio">cardio</option>
+												<option value="neuro">neuro</option>
+												<option value="orthopadeic">orthopadeic</option>
+												<option value="physiotherapist">physiotherapist</option>
+												<option value="vetenerian">vetenerian</option>
+												<option value="Pathology">Pathology</option>
+												<option value="Pediatrics">Pediatrics</option>
+												<option value="chest">chest</option>
+												<option value="Urology">Urology</option>
+												<option value="Psychatrist">Psychatrist</option>
+												
+												
+											</select>	
                                         </div>
                                     </div>
 
@@ -186,12 +204,9 @@ class Editprofile extends Component {
 
                                 </div>
 
-
-
-
-                                {/* <button class="btncss btn--radius-2 btn--red" type="submit">Edit Details</button> */}
-                                <button class="btncss btn--radius-2 btn--blue fl" type="submit" onClick={this.onSubmit}>Save</button>
-
+                                <div className="ml7">
+                                <button class="btncss btn--radius-2 btn--blue fl " type="submit" onClick={this.onSubmit}>Save</button>
+                                </div>
                             </form>
                         </div>
                     </div>

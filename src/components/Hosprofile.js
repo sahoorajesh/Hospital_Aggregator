@@ -23,7 +23,7 @@ class Hosprofile extends Component {
     render(){
         return (
             <div>
-                <Navigation Tabchange="Logout" url="/hospitallogin" />
+                <Navigation Tabchange="Logout" url="/" />
                 <body>
                     <div class="page-wrapper p-t-45 p-b-50">
                         <div class="wrapper wrapper--w790">

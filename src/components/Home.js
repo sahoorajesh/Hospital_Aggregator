@@ -12,7 +12,7 @@ class Home extends Component {
         this.state = {
             hospital: [],
             searchfield:"",
-            filteredHospitals:[]
+            
         };
         this.handleChange = this.handleChange.bind(this);
     };
@@ -32,47 +32,20 @@ class Home extends Component {
                 searchfield: event.target.value 
             })
 
-        if(event.target.value === "Accepted"){
-            this.setState({
-                filteredHospitals: this.state.hospital.filter(hospital =>{
-                    return hospital.showapproveStatus===true;
-                    })
-            })
-        }
-
-        else if(event.target.value === "Rejected"){
-            this.setState({
-                filteredHospitals: this.state.hospital.filter(hospital =>{
-                    return hospital.showrejectStatus===true;
-                    })
-            })
-        }
-
-        else if(event.target.value === "New"){
-            this.setState({
-                filteredHospitals: this.state.hospital.filter(hospital =>{
-                    return hospital.showButton===true;
-                    })
-            })
-        }
-
-        else if(event.target.value === ""){
-            this.setState({
-                filteredHospitals: this.state.hospital
-            })
-        }
-        
-      }
-
+    }
 
     render() {
+        const {hospital,searchfield} = this.state
+        const filteredhospital = hospital.filter(hosp =>{
+            return hosp.hospspec.toLowerCase().includes(searchfield.toLowerCase());
+          })
         return (
             <div className="yu8 bg-white-30">
                 <Navigation Tabchange="Hospital Register" url="/hospitalregister" Tabchange1="Sign in" url1="/login" />
 
 
-                {/* Search bar */}
                 <div className='pa2'>
+                    <strong className="f4 mr3"> &nbsp; Search by speciality</strong>
                     <input
                         className='pa3 ba bg-lightest-blue w-30'
                         type='search'
@@ -80,15 +53,9 @@ class Home extends Component {
                         onChange={this.handleChange}
 
                     />
-                    <strong className="f4 mr3"> &nbsp; Show All</strong>
+                    
                 </div>
 
-                {/* Search bar */}
-
-
-
-
-                {/* Main Home Page Code */}
                 <h2 className="text-center"> Hospital List</h2>
                 <div className="bd-callout bd-callout-info overflow-auto ">
                     <table className="bb  shadow-3 f6 mw8 center width" cellSpacing="auto">
@@ -102,23 +69,15 @@ class Home extends Component {
                             </tr>
                         </thead>
 
-                        {/* <tbody>
-                            <tr>
-                                <th> Hospital Detail</th>
-                                <th> Spaciality</th>
-                                <th> Action</th>
-                            </tr>
-                        </tbody> */}
-
-
+                     
                         <tbody id="h1">
                             {
-                                this.state.hospital.map(
+                                filteredhospital.map(
                                     hospital =>
                                         <tr className="m3 shadow shadow-hover drk " id="rd"
                                             key={hospital.id}>
-                                            <td className="rf"><big><img className="icon avatar1" src={hospital.imagelink} alt="hosp" width="100px" />Name: {hospital.hospname}<br />
-                                                <strong className="f4">About Hospital: </strong>About: {hospital.aboutus}</big><div className="hide" id={hospital.id} ><h5>District: {hospital.district}<h5>Address: {hospital.hospaddress}</h5></h5><h5>Mobile: {hospital.mobile}</h5><h5>Website: {hospital.website}</h5><h5>Ownership: {hospital.ownership}</h5><h5>Year: {hospital.year}</h5></div></td>
+                                            <td className="rf"><big><img className="icon avatar1" src={hospital.imagelink} alt="hosp" width="100px" />Hospital Name: {hospital.hospname}<br />
+                                                <strong className="f4">About Hospital: </strong> {hospital.aboutus}</big><div className="hide" id={hospital.id} ><h5>District: {hospital.district}<h5>Address: {hospital.hospaddress}</h5></h5><h5>Mobile: {hospital.mobile}</h5><h5>Website: {hospital.website}</h5><h5>Ownership: {hospital.ownership}</h5><h5>Year: {hospital.year}</h5></div></td>
 
 
                                             <td className="kj4"><big>Speciality: {hospital.hospspec}</big></td>
@@ -139,11 +98,6 @@ class Home extends Component {
 
 
                                             </td>
-
-                                            {/*
-                                            <td> {hospital.aboutus} </td>
-                                            <td> {hospital.hospspec} </td> */}
-                                            {/* <td> {hospital.action} </td> */}
                                         </tr>
                                 )
                             }

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navigation.css";
-
+import FYH from "../images/FYH.jpeg"
 import {Link } from "react-router-dom";
 const Navigation = (props) =>{
 	
@@ -11,7 +11,7 @@ const Navigation = (props) =>{
 			<nav className="zone ma0 bg pointer br4 ">
 				<ul className="main-nav white ma0 list flex f4">
 				  <li className= "pa3 grow">
-				  	Website name
+				  	FYH
 				  </li>
 				 
 				  <li className= "pa3 grow">
