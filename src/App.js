@@ -10,6 +10,7 @@ import Loginhospital from "./components/Loginhospital";
 import Enquiry from "./components/Enquiry";
 import Admin from "./components/Admin"
 import Hosprofile from "./components/Hosprofile";
+import Editprofile from "./components/Editprofile";
 
 class App extends Component{
   render(){
@@ -27,9 +28,10 @@ class App extends Component{
                 <Route path = "/resetpassword" component = {ResetPassword}/>
                 <Route path = "/admin" component = {Admin}/>
                 <Route path = "/enquiry" component = {Enquiry}/>
-                <Route path="/hosprofile" component={Hosprofile}/>
+                <Route path="/hosprofile/:username" component={Hosprofile}/>
+                <Route path="/editprofile/:username" component={Editprofile}/>
+           
             </Switch>
-       
         
       </div>
     </BrowserRouter>

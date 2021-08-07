@@ -3,7 +3,8 @@ import Navigation from './Navigation';
 import { NavLink } from 'react-router-dom';
 import "./Userregister.css"
 import { useState } from "react";
-function Userregister() {
+import axios from "axios";
+function Userregister(props) {
     const [username,setName] = useState("")
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
@@ -12,18 +13,14 @@ function Userregister() {
     {
         e.preventDefault()
         let item = {username,email,password,"roles":["admin"]}
-        console.warn(item)
-        
-        let result = await fetch("http://localhost:8010/api/test/admin/signup",{
-            method : "POST",
-            body :JSON.stringify(item),
-            headers : {
-                "Content-Type":"application/json; charset=utf-8",
-                "Accept":"application/json"
-            }
+        axios.post('http://localhost:8010/api/test/admin/signup', item)
+        .then( result => {
+            alert(result.data.message)
+            props.history.push('/login')
         })
-        result = await result.json()
-        console.warn("result",result)
+        .catch( err =>{
+            alert(err.response.data.error ?? err.response.data.message)
+        })
     }
 
     return (

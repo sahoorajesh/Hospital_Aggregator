@@ -82,3 +82,11 @@
 .signup-form form a:hover {
   text-decoration: underline;
 }
+
+/* Show icons to the left */
+.input-group {
+  display: flex;
+}
+.input-group>i {
+  position: initial !important;
+}

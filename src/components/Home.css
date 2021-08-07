@@ -253,3 +253,14 @@ form:hover .fa{
     color: white;
 } */
 
+.avatar1{
+    height: 100px;
+    width: 100px;
+    border-radius:50%;
+    border-color: black;
+    border-style: solid;
+}
+
+.hide{
+    display:none;
+}
